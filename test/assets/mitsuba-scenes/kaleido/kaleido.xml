@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<scene version="0.6.0">
+	<!-- <integrator type="kaleidoad"> -->
+	<integrator type="kaleido">
+		<integer name="maxDepth" value="8"/>
+	</integrator>
+	<!-- <integrator type="path"/> -->
+
+	<sensor type="perspective">
+		<float name="fov" value="30"/>
+		<transform name="toWorld">
+			<lookAt origin="9 0 0" target="0 0 0" up="0 1 0"/>
+		</transform>
+
+		<sampler type="independent">
+			<integer name="sampleCount" value="1"/>
+		</sampler>
+
+		<film type="hdrfilm">
+			<integer name="width" value="512"/>
+			<integer name="height" value="512"/>
+			<string name="fileFormat" value="openexr"/>
+			<boolean name="banner" value="false"/>
+			<!-- <rfilter type="gaussian"/> -->
+			<rfilter type="box"/>
+		</film>
+	</sensor>
+
+	<shape type="obj" id="prism">
+		<string name="filename" value="prism.obj"/>
+		<transform name="toWorld">
+			<rotate x="1" y="0" z="0" angle="$invrender-param-0"/>
+			<!-- <rotate x="1" y="0" z="0" angle="45"/> -->
+		</transform>
+		<bsdf type="conductor">
+			<string name="material" value="none"/>
+		</bsdf>
+	</shape>
+
+	<shape type="obj" id="mosaic">
+		<string name="filename" value="mosaic.obj"/>
+		<bsdf type="diffuse">
+			<rgb name="reflectance" value="0 0 0"/>
+		</bsdf>
+
+		<emitter type="area">
+			<spectrum name="radiance" value="1 1 1"/>
+		</emitter>
+	</shape>
+
+</scene>

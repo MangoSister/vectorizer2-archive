@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<scene version="0.6.0">
+	<boolean name="buildBVH" value="true"/>
+	<integrator type="vtrzdirect">
+	</integrator>
+	
+	<sensor type="perspective">
+		<transform name="toWorld">
+			<lookAt origin="0 0 0" target="0 0 -1" up="0 1 0"/>
+		</transform>
+		<float name="fov" value="45"/>
+
+		<sampler type="independent">
+			<integer name="sampleCount" value="1"/>
+		</sampler>
+
+		<film type="hdrfilm">
+			<integer name="width" value="512"/>
+			<integer name="height" value="512"/>
+			<boolean name="banner" value="false"/>
+			<string name="fileFormat" value="openexr"/>
+			<rfilter type="box"/>
+		</film>
+	</sensor>
+
+	<shape type="obj">
+		<string name="filename" value="../../quadsphere.obj"/>
+		<transform name="toWorld">
+			<scale x="0.5" y="0.5" z="0.5"/>
+			<translate x="0" y="0" z="-5"/>
+		</transform>
+		<bsdf type="diffuse">
+			<spectrum name="reflectance" value="0.5 0.5 0.5"/>
+		</bsdf>
+	</shape>
+
+	<shape type="obj">
+		<string name="filename" value="../../quad.obj"/>
+		<transform name="toWorld">
+		 	<scale x="1" z="1"/>
+			<translate x="0" y="-1.5" z="-5"/>
+		</transform>
+
+		<bsdf type="diffuse">
+			<spectrum name="reflectance" value="0.5 0.5 0.5"/>
+		</bsdf>
+	</shape>
+
+	<shape type="obj">
+		<string name="filename" value="../../quad.obj"/>
+		<transform name="toWorld">
+            <scale x="5" z="5"/>
+            <rotate x="1" y="0" z="0" angle="180"/>
+            <translate x="0" y="3" z="-5"/>
+		</transform>
+
+		<emitter type="area">
+			<spectrum name="radiance" value="2"/>
+		</emitter>
+		<bsdf type="diffuse">
+			<spectrum name="reflectance" value="0"/>
+		</bsdf>
+	</shape>
+</scene>

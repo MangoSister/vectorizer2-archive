@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<scene version="0.6.0">
+	<integrator type="vdirectad">
+		<string name="transformAD0" value="puffer:w:ty-"/>
+	</integrator>
+
+	<sensor type="perspective">
+		<float name="fov" value="95"/>
+		<float name="near_clip" value="0.01"/>
+		<transform name="toWorld">
+
+			<lookat target="0, 0, 0" origin="20, 420, 0" up="0, 1, 0"/>
+		</transform>
+
+		<sampler type="independent">
+			<integer name="sampleCount" value="2048"/>
+		</sampler>
+
+		<film type="hdrfilm">
+			<boolean name="banner" value="false"/>
+			<integer name="height" value="512"/>
+			<integer name="width" value="512"/>
+
+			<rfilter type="box"/>
+		</film>
+	</sensor>
+
+	<bsdf type="diffuse" id="light">
+		<spectrum name="reflectance" value="0.0,0.0,0.0"/>
+	</bsdf>
+
+	<bsdf type="diffuse" id="floor">
+		<spectrum name="reflectance" value="0.9,0.9,0.9"/>
+	</bsdf>
+
+	<bsdf type="diffuse" id="fluffy">
+		<spectrum name="reflectance" value="0.8,0.6,0.9"/>
+	</bsdf>
+
+	<shape type="obj">
+		<string name="filename" value="plane.obj"/>
+
+		<ref id="floor"/>
+	</shape>
+
+	<shape type="obj" id="light1">
+		<string name="filename" value="emitter.obj"/>
+
+		<ref id="light"/>
+		<transform name="toWorld">
+			<scale x="5" z="5"/>
+			<translate z="-100" x="-67"/>
+		</transform>
+
+		<emitter type="area">
+			<spectrum name="radiance" value="0.8e3, 0.2e3, 0.2e3"/>
+		</emitter>
+	</shape>
+
+	<shape type="obj" id="light2">
+		<string name="filename" value="emitter.obj"/>
+
+		<ref id="light"/>
+		<transform name="toWorld">
+			<scale x="5" z="5"/>
+			<translate z="100" x="-67"/>
+		</transform>
+
+		<emitter type="area">
+			<spectrum name="radiance" value="0.2e3, 0.8e3, 0.2e3"/>
+		</emitter>
+	</shape>
+
+	<shape type="obj" id="light3">
+		<string name="filename" value="emitter.obj"/>
+
+		<ref id="light"/>
+		<transform name="toWorld">
+			<scale x="5" z="5"/>
+			<translate x="115"/>
+		</transform>
+
+		<emitter type="area">
+			<spectrum name="radiance" value="0.2e3, 0.2e3, 0.8e3"/>
+		</emitter>
+	</shape>
+
+	<shape type="obj" id="puffer">
+		<string name="filename" value="fluffy.obj"/>
+		<transform name="toWorld">
+			<translate y="550"/>
+		</transform>
+
+		<ref id="fluffy"/>
+	</shape>
+</scene>

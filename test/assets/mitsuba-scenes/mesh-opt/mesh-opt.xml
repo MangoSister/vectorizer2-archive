@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<scene version="0.6.0">
+	<integrator type="vdirectad">
+		<boolean name="multisample" value="true"/>
+
+		<!-- <string name="perVertexAD" value="targetMesh"/> -->
+		<!-- <integer name="meshDispType" value="1"/> -->
+		<!-- <spectrum name="meshDispParams" value=" 0.5 5.0 5.0"/> -->
+		<!-- <string name="meshDispCoeffs" value="coeffs.bin"/> -->
+		<!-- <string name="outputgradmode" value="magnitude"/> -->
+		<!-- <boolean name="outputVertexCoeffs" value="false"/> -->
+
+		<string name="perVertexAD" value="$invrender-param-target"/>
+		<string name="outputgradmode" value="$invrender-param-output-mode"/>
+		<float name="gradscale" value="$invrender-param-grad-scale"/>
+		<integer name="meshDispType" value="$invrender-param-disp-type"/>
+		<spectrum name="meshDispParams" value="$invrender-param-disp-params"/>
+		<string name="meshDispCoeffs" value="$invrender-param-disp-coeffs"/>
+		<boolean name="outputVertexCoeffs" value="$invrender-param-output-vertex-coeffs"/>
+	</integrator>
+
+	<sensor type="perspective">
+		<transform name="toWorld">
+			<!-- <lookAt origin="20 10 -20" target="0 4 0" up="0 1 0"/> -->
+			<!-- <lookAt origin="-10 -3 10" target="0 6 0" up="0 1 0"/> -->
+			<!-- <lookAt origin="0 5 -10" target="0 5 0" up="0 1 0"/> -->
+			<!-- <lookAt origin="0 15 0" target="0 5 0" up="1 0 0"/> -->
+			<!-- <lookAt origin="0 5 10" target="0 5 0" up="0 1 0"/> -->
+			<!-- <lookAt origin="0 -5 0" target="0 5 0" up="1 0 0"/> -->
+			<!-- <lookAt origin="10 5 0" target="0 5 0" up="0 1 0"/> -->
+			<!-- <lookAt origin="-10 5 0" target="0 5 0" up="0 1 0"/> -->
+			<lookAt origin="$invrender-param-view-origin" target="$invrender-param-view-target" up="$invrender-param-view-up"/>
+		</transform>
+		<float name="fov" value="30"/>
+
+		<sampler type="independent">
+			<integer name="sampleCount" value="1"/>
+		</sampler>
+
+		<film type="hdrfilm">
+			<integer name="width" value="256"/>
+			<integer name="height" value="256"/>
+			<boolean name="banner" value="false"/>
+			<string name="fileFormat" value="openexr"/>
+			<rfilter type="box"/>
+		</film>
+	</sensor>
+
+	<shape type="obj" id="stage">
+		<string name="filename" value="stage.obj"/>
+		<boolean name="faceNormals" value="true"/>
+		<bsdf type="diffuse">
+			<spectrum name="reflectance" value="1 1 1"/>
+		</bsdf>
+	</shape>
+
+	<shape type="obj" id="targetMesh">
+		<!-- <string name="filename" value="wtf2.obj"/> -->
+		<string name="filename" value="$invrender-param-mesh"/>
+		<!-- <boolean name="faceNormals" value="true"/> -->
+		<boolean name="faceNormals" value="$invrender-param-face-normal"/>
+		<bsdf type="diffuse">
+			<spectrum name="reflectance" value="1 1 1"/>
+		</bsdf>
+	</shape>
+
+	<shape type="obj" id="light1">
+		<string name="filename" value="../../quad.obj"/>
+		<transform name="toWorld">
+            <scale x="0.5" z="0.5"/>
+			<rotate x="0" y="0" z="1" angle="180"/>
+			<translate y="10"/>
+		</transform>
+		<emitter type="area">
+			<spectrum name="radiance" value="20 14 16"/>
+		</emitter>
+		<bsdf type="diffuse">
+			<spectrum name="reflectance" value="0"/>
+		</bsdf>
+	</shape>
+
+	<shape type="obj" id="light2">
+		<string name="filename" value="../../quad.obj"/>
+		<transform name="toWorld">
+            <scale x="0.5" z="0.5"/>
+			<rotate x="0" y="0" z="1" angle="90"/>
+			<translate x="5" y="5"/>
+		</transform>
+		<emitter type="area">
+			<spectrum name="radiance" value="14 18 20"/>
+		</emitter>
+		<bsdf type="diffuse">
+			<spectrum name="reflectance" value="0"/>
+		</bsdf>
+	</shape>
+
+	<shape type="obj" id="light3">
+		<string name="filename" value="../../quad.obj"/>
+		<transform name="toWorld">
+            <scale x="0.5" z="0.5"/>
+			<rotate x="1" y="0" z="0" angle="90"/>
+			<translate y="5" z="-5"/>
+		</transform>
+		<emitter type="area">
+			<spectrum name="radiance" value="20 20 14"/>
+		</emitter>
+		<bsdf type="diffuse">
+			<spectrum name="reflectance" value="0"/>
+		</bsdf>
+	</shape>
+
+	<shape type="obj" id="light4">
+		<string name="filename" value="corner.obj"/>
+		<emitter type="area">
+			<spectrum name="radiance" value="10 10 10"/>
+		</emitter>
+		<bsdf type="diffuse">
+			<spectrum name="reflectance" value="0"/>
+		</bsdf>
+	</shape>
+
+</scene>

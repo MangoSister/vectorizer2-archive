@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<scene version="0.6.0">
+	<boolean name="buildBVH" value="true"/>
+	<integrator type="vdirect">
+		<boolean name="multisample" value="true"/>
+	</integrator>
+
+	<sensor type="perspective">
+		<float name="fov" value="35"/>
+		<transform name="toWorld">
+			<matrix value="-0.678116 -0.167853 -0.715531 58.206 -4.39487e-008 0.973571 -0.228385 24.9284 0.734955 -0.154871 -0.660194 52.9501 0 0 0 1"/>
+		</transform>
+
+		<sampler type="sobol">
+			<integer name="sampleCount" value="64"/>
+		</sampler>
+
+		<film type="hdrfilm">
+			<integer name="width" value="1280"/>
+			<integer name="height" value="720"/>
+			<boolean name="banner" value="false"/>
+			<rfilter type="box"/>
+		</film>
+	</sensor>
+
+	<bsdf type="diffuse" id="Sand">
+		<srgb name="reflectance" value="0.92, 0.82, 0.69"/>
+	</bsdf>
+
+	<bsdf type="disneylite" id="GroundOuter">
+		<srgb name="baseColor" value="0.8 0.8 0.8"/>
+		<float name="roughness" value="0.4"/>
+		<float name="metallic" value="0.0"/>
+		<float name="specular" value="1.0"/>
+	</bsdf>
+
+	<bsdf type="diffuse" id="Cloth">
+		<srgb name="reflectance" value="0.5, 0.1, 0.1"/>
+	</bsdf>
+
+	<bsdf type="diffuse" id="Rock">
+		<srgb name="reflectance" value="0.65, 0.6, 0.5"/>
+	</bsdf>
+
+	<bsdf type="disneylite" id="Dragon">
+		<float name="roughness" value="0.55"/>
+		<float name="metallic" value="1.0"/>
+		<boolean name="complexIOR" value="true"/>
+		<spectrum name='eta' value='0.143537, 0.377331, 1.43781'/>
+		<spectrum name='k' value='3.98545, 2.38361, 1.60391'/>
+	</bsdf>
+
+	<bsdf type="disneylite" id="Blade">
+		<float name="roughness" value="0.2"/>
+		<float name="metallic" value="1.0"/>
+		<boolean name="complexIOR" value="true"/>
+		<spectrum name='eta' value='0.155475, 0.116753, 0.138334'/>
+		<spectrum name='k' value='4.83181, 3.12296, 2.14866'/>
+	</bsdf>
+
+	<bsdf type="disneylite" id="Silver">
+		<float name="roughness" value="0.2"/>
+		<float name="metallic" value="1.0"/>
+		<boolean name="complexIOR" value="true"/>
+		<spectrum name='eta' value='0.155475, 0.116753, 0.138334'/>
+		<spectrum name='k' value='4.83181, 3.12296, 2.14866'/>
+	</bsdf>
+
+	<shape type="obj">
+		<string name="filename" value="models/Mesh011.obj"/>
+		<transform name="toWorld">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1"/>
+		</transform>
+
+		<ref id="GroundOuter"/>
+	</shape>
+
+	<shape type="obj">
+		<string name="filename" value="models/Mesh010.obj"/>
+		<transform name="toWorld">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1"/>
+		</transform>
+
+		<ref id="Cloth"/>
+	</shape>
+
+	<shape type="obj">
+		<string name="filename" value="models/Mesh005.obj"/>
+		<transform name="toWorld">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1"/>
+		</transform>
+
+		<ref id="Rock"/>
+	</shape>
+
+	<shape type="obj">
+		<string name="filename" value="models/Mesh006.obj"/>
+		<transform name="toWorld">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1"/>
+		</transform>
+
+		<ref id="GroundOuter"/>
+	</shape>
+
+	<shape type="obj">
+		<string name="filename" value="models/Mesh012.obj"/>
+		<transform name="toWorld">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1"/>
+		</transform>
+
+		<ref id="Sand"/>
+	</shape>
+
+	<shape type="obj">
+		<string name="filename" value="models/Mesh007.obj"/>
+		<transform name="toWorld">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1"/>
+		</transform>
+
+		<ref id="Rock"/>
+	</shape>
+
+	<shape type="obj">
+		<string name="filename" value="models/Mesh008.obj"/>
+		<transform name="toWorld">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1"/>
+		</transform>
+
+		<ref id="Dragon"/>
+	</shape>
+
+	<shape type="obj">
+		<string name="filename" value="models/Mesh013.obj"/>
+		<transform name="toWorld">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1"/>
+		</transform>
+
+		<ref id="Dragon"/>
+	</shape>
+
+	<shape type="obj">
+		<string name="filename" value="models/Mesh014.obj"/>
+		<transform name="toWorld">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1"/>
+		</transform>
+
+		<ref id="Dragon"/>
+	</shape>
+
+	<shape type="obj">
+		<string name="filename" value="models/Mesh015.obj"/>
+		<transform name="toWorld">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1"/>
+		</transform>
+
+		<ref id="Dragon"/>
+	</shape>
+
+	<shape type="obj">
+		<string name="filename" value="models/Mesh004.obj"/>
+		<transform name="toWorld">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1"/>
+		</transform>
+
+		<ref id="Silver"/>
+	</shape>
+
+	<shape type="obj">
+		<string name="filename" value="models/Mesh009.obj"/>
+		<transform name="toWorld">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1"/>
+		</transform>
+
+		<ref id="Silver"/>
+	</shape>
+
+	<shape type="obj">
+		<string name="filename" value="models/Mesh003.obj"/>
+		<transform name="toWorld">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1"/>
+		</transform>
+
+		<ref id="Silver"/>
+	</shape>
+
+	<shape type="obj">
+		<string name="filename" value="models/Mesh002.obj"/>
+		<transform name="toWorld">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1"/>
+		</transform>
+
+		<ref id="Silver"/>
+	</shape>
+
+	<shape type="obj">
+		<string name="filename" value="models/Mesh001.obj"/>
+		<transform name="toWorld">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1"/>
+		</transform>
+
+		<ref id="Silver"/>
+	</shape>
+
+	<shape type="obj">
+		<string name="filename" value="models/Mesh000.obj"/>
+		<transform name="toWorld">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1"/>
+		</transform>
+
+		<ref id="Silver"/>
+	</shape>
+
+	<shape type="obj" id="light">
+		<string name="filename" value="models/ico.obj"/>
+		<transform name="toWorld">
+			<scale x="2" y="2" z="2"/>
+			<translate x="20" y="30" z="30"/>
+			<!-- <scale x="$light-scale" y="$light-scale" z="$light-scale"/> -->
+		</transform>
+		<emitter type="area">
+			<blackbody name="radiance" temperature="4000" scale="0.2"/>
+		</emitter>
+	</shape>
+
+	<!-- <emitter type="sun">
+		<vector name="sunDirection" x="-0.18862" y="0.692312" z="0.69651"/>
+		<float name="scale" value="8"/>
+		<float name="sunRadiusScale" value="37.9165"/>
+	</emitter> -->
+
+	<!-- Constant background -->
+	<emitter type="constant">
+		<srgb name="radiance" value="0.2 0.2 0.2"/>
+	</emitter>
+</scene>

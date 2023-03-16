@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<scene version="0.6.0">
+	<integrator type="vdirectad">
+		<boolean name="multisample" value="true"/>
+		<string name="outputgradmode" value="$invrender-param-output-mode"/>
+
+		<string name="transformAD0" value="cog1:l:r(0,0,1)"/>
+		<string name="transformAD1" value="cog2:l:r(0,0,1)"/>
+		<string name="transformAD2" value="cog3:l:r(0,0,1)"/>
+		<string name="transformAD3" value="cog4:l:r(0,0,1)"/>
+		<string name="transformAD4" value="cog6:l:r(0,0,1)"/>
+		<string name="transformAD5" value="cog8:l:r(0,0,1)"/>
+		<string name="transformAD6" value="cog9:l:r(0,0,1)"/>
+		<string name="transformAD7" value="cog10:l:r(0,0,1)"/>
+		<string name="transformAD8" value="cog11:l:r(0,0,1)"/>
+		<string name="transformAD9" value="cog12:l:r(0,0,1)"/>
+		<string name="transformAD10" value="cog13:l:r(0,0,1)"/>
+		<string name="transformAD11" value="cog15:l:r(0,0,1)"/>
+		<string name="transformAD12" value="cog16:l:r(0,0,1)"/>
+		<string name="transformAD13" value="cog18:l:r(0,0,1)"/>
+		<string name="transformAD14" value="anker:l:r(0,0,1)"/>
+	</integrator>
+
+	<sensor type="perspective">
+		<transform name="toWorld">
+			<!-- <lookAt origin="0 20 38" target="0 14 0" up="0 1 0"/> -->
+			<!-- <lookAt origin="0 20 20" target="0 20 -5" up="0 1 0"/> -->
+			 <lookAt origin="0 5 -1" target="0 5 -2" up="0 1 0"/>
+		</transform>
+		<float name="fov" value="125"/>
+
+		<sampler type="independent">
+			<integer name="sampleCount" value="1"/>
+		</sampler>
+
+		<film type="hdrfilm">
+			<integer name="width" value="256"/>
+			<integer name="height" value="256"/>
+			<boolean name="banner" value="false"/>
+			<string name="fileFormat" value="openexr"/>
+			<rfilter type="box"/>
+			<!-- <rfilter type="gaussian"/> -->
+		</film>
+	</sensor>
+
+	<bsdf type="diffuse" id="gearBSDF">
+		<rgb name="reflectance" value="0.5 0.5 0.5"/>
+	</bsdf>
+
+	<bsdf type="disneylite" id="backdropBSDF">
+		<texture name="baseColor" type="bitmap">
+			<string name="filename" value="metal/Metal008_2K_Color.png"/>
+			<!-- <float name="uscale" value="5.0"/> -->
+			<!-- <float name="vscale" value="5.0"/> -->
+			<float name="gamma" value="-1"/>
+			<string name="filterType" value="trilinear"/>
+		</texture>
+		<texture name="metallic" type="bitmap">
+			<string name="filename" value="metal/Metal008_2K_Metalness.png"/>
+			<!-- <float name="uscale" value="5.0"/> -->
+			<!-- <float name="vscale" value="5.0"/> -->
+			<float name="gamma" value="1"/>
+			<string name="filterType" value="trilinear"/>
+		</texture>
+		<texture name="roughness" type="bitmap">
+			<string name="filename" value="metal/roughness3.png"/>
+			<!-- <float name="uscale" value="5.0"/> -->
+			<!-- <float name="vscale" value="5.0"/> -->
+			<float name="gamma" value="1"/>
+			<string name="filterType" value="trilinear"/>
+		</texture>
+	</bsdf>
+
+	<shape type="obj" id="cog1">
+		<string name="filename" value="cog1.obj"/>
+		<ref id="gearBSDF"/>
+		<transform name="toWorld">
+			<rotate x="0" y="0" z="1" angle="$invrender-param-0"/>
+			<translate x="1.3859" z="-0.42831" y="6.6384"/>
+		</transform>
+	</shape>
+
+	<shape type="obj" id="cog2">
+		<string name="filename" value="cog2.obj"/>
+		<ref id="gearBSDF"/>
+		<transform name="toWorld">
+			<rotate x="0" y="0" z="1" angle="$invrender-param-1"/>
+			<translate x="-1.2416" z="-0.32976" y="5.9378"/>
+		</transform>
+	</shape>
+
+	<shape type="obj" id="cog3">
+		<string name="filename" value="cog3.obj"/>
+		<ref id="gearBSDF"/>
+		<transform name="toWorld">
+			<rotate x="0" y="0" z="1" angle="$invrender-param-2"/>
+			<translate x="-2.8783" z="-0.64624" y="3.5721"/>
+		</transform>
+	</shape>
+
+	<shape type="obj" id="cog4">
+		<string name="filename" value="cog4.obj"/>
+		<ref id="gearBSDF"/>
+		<transform name="toWorld">
+			<rotate x="0" y="0" z="1" angle="$invrender-param-3"/>
+			<translate x="2.7796" z="-0.26349" y="3.9753"/>
+		</transform>
+	</shape>
+
+	<shape type="obj" id="cog6">
+		<string name="filename" value="cog6.obj"/>
+		<ref id="gearBSDF"/>
+		<transform name="toWorld">
+			<rotate x="0" y="0" z="1" angle="$invrender-param-4"/>
+			<translate x="-3.4883" z="-0.013502" y="6.5511"/>
+		</transform>
+	</shape>
+
+	<shape type="obj" id="cog8">
+		<string name="filename" value="cog8.obj"/>
+		<ref id="gearBSDF"/>
+		<transform name="toWorld">
+			<rotate x="0" y="0" z="1" angle="$invrender-param-5"/>
+			<translate x="0.27699" z="-0.27097" y="8.1777"/>
+		</transform>
+	</shape>
+
+	<shape type="obj" id="cog9">
+		<string name="filename" value="cog9.obj"/>
+		<ref id="gearBSDF"/>
+		<transform name="toWorld">
+			<rotate x="0" y="0" z="1" angle="$invrender-param-6"/>
+			<translate x="-1.7777" z="0" y="1.4898"/>
+		</transform>
+	</shape>
+
+	<shape type="obj" id="cog10">
+		<string name="filename" value="cog10.obj"/>
+		<ref id="gearBSDF"/>
+		<transform name="toWorld">
+			<rotate x="0" y="0" z="1" angle="$invrender-param-7"/>
+			<translate x="2.7184" z="-0.86154" y="7.3293"/>
+		</transform>
+	</shape>
+
+	<shape type="obj" id="cog11">
+		<string name="filename" value="cog11.obj"/>
+		<ref id="gearBSDF"/>
+		<transform name="toWorld">
+			<rotate x="0" y="0" z="1" angle="$invrender-param-8"/>
+			<translate x="2.5967" z="0.48274" y="2.3418"/>
+		</transform>
+	</shape>
+
+	<shape type="obj" id="cog12">
+		<string name="filename" value="cog12.obj"/>
+		<ref id="gearBSDF"/>
+		<transform name="toWorld">
+			<rotate x="0" y="0" z="1" angle="$invrender-param-9"/>
+			<translate x="-1.892" z="0.42695" y="7.9878"/>
+		</transform>
+	</shape>
+
+	<shape type="obj" id="cog13">
+		<string name="filename" value="cog13.obj"/>
+		<ref id="gearBSDF"/>
+		<transform name="toWorld">
+			<rotate x="0" y="0" z="1" angle="$invrender-param-10"/>
+			<translate x="3.1124" z="0.84572" y="5.4521"/>
+		</transform>
+	</shape>
+
+	<!-- <shape type="obj" id="cog14">
+		<string name="filename" value="cog14.obj"/>
+		<ref id="gearBSDF"/>
+		<transform name="toWorld">
+			<rotate x="0" y="0" z="1" angle="$invrender-param-11"/>
+			<translate x="-0.95558" z="-0.97123" y="7.1729"/>
+		</transform>
+	</shape> -->
+
+	<shape type="obj" id="cog15">
+		<string name="filename" value="cog15.obj"/>
+		<ref id="gearBSDF"/>
+		<transform name="toWorld">
+			<rotate x="0" y="0" z="1" angle="$invrender-param-11"/>
+			<translate x="-3.5378" z="0.78193" y="2.0587"/>
+		</transform>
+	</shape>
+
+	<shape type="obj" id="cog16">
+		<string name="filename" value="cog16.obj"/>
+		<ref id="gearBSDF"/>
+		<transform name="toWorld">
+			<rotate x="0" y="0" z="1" angle="$invrender-param-12"/>
+			<translate x="3.6488" z="0" y="7.7933"/>
+		</transform>
+	</shape>
+
+	<!-- <shape type="obj" id="cog17">
+		<string name="filename" value="cog17.obj"/>
+		<ref id="gearBSDF"/>
+		<transform name="toWorld">
+			<translate x="-2.6208" z="-0.26308" y="8.8857"/>
+		</transform>
+	</shape> -->
+
+	<shape type="obj" id="cog18">
+		<string name="filename" value="cog18.obj"/>
+		<ref id="gearBSDF"/>
+		<transform name="toWorld">
+			<rotate x="0" y="0" z="1" angle="$invrender-param-13"/>
+			<translate x="0.56485" z="0.33337" y="1.9552"/>
+		</transform>
+	</shape>
+
+	<shape type="obj" id="anker">
+		<string name="filename" value="anker.obj"/>
+		<ref id="gearBSDF"/>
+		<transform name="toWorld">
+			<rotate x="0" y="0" z="1" angle="$invrender-param-14"/>
+			<translate x="0.0" z="0.0" y="4.83"/>
+		</transform>
+	</shape>
+
+	<!-- <shape type="obj" id="backdrop">
+		<string name="filename" value="backdrop.obj"/>
+		<ref id="backdropBSDF"/>
+	</shape> -->
+
+	<shape type="obj" id="dome">
+		<string name="filename" value="uvdome.obj"/>
+		<ref id="backdropBSDF"/>
+	</shape>
+
+	<shape type="obj" id="light">
+		<string name="filename" value="light.obj"/>
+		<emitter type="area">
+			<spectrum name="radiance" value="2000 2000 2000"/>
+		</emitter>
+		<bsdf type="diffuse">
+			<spectrum name="reflectance" value="0"/>
+		</bsdf>
+	</shape>
+
+</scene>

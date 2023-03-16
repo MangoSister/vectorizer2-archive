@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<scene version="0.6.0">
+	<!-- <integrator type="vpath"> -->
+	<integrator type="vpath">
+		<integer name="maxDepth" value="3"/>
+	</integrator>
+	<!-- <integrator type="path"/> -->
+
+	<sensor type="perspective">
+		<float name="fov" value="45"/>
+		<transform name="toWorld">
+			<lookAt origin="0 0 45" target="0 0 0" up="0 1 0"/>
+		</transform>
+
+		<sampler type="independent">
+			<integer name="sampleCount" value="16"/>
+		</sampler>
+
+		<film type="hdrfilm">
+			<integer name="width" value="512"/>
+			<integer name="height" value="512"/>
+			<string name="fileFormat" value="openexr"/>
+			<boolean name="banner" value="false"/>
+			<!-- <rfilter type="gaussian"/> -->
+			<rfilter type="box"/>
+		</film>
+	</sensor>
+
+	<shape type="obj" id="wall">
+		<string name="filename" value="wall.obj"/>
+		<bsdf type="diffuse">
+			<rgb name="reflectance" value="0.8, 0.8, 0.8"/>
+		</bsdf>
+	</shape>
+
+	<shape type="obj" id="ikea_lamp">
+		<string name="filename" value="ikea_lamp.obj"/>
+		<bsdf type="diffuse">
+			<rgb name="reflectance" value="0.88, 0.53, 0.12"/>
+		</bsdf>
+	</shape>
+
+	<!-- <shape type="obj" id="ikea_lamp_bulb">
+		<string name="filename" value="ikea_lamp_bulb.obj"/>
+		<bsdf type="diffuse">
+			<rgb name="reflectance" value="0.0, 0.0, 0.0"/>
+		</bsdf>
+
+		<emitter type="area">
+			<spectrum name="radiance" value="1000 770 560"/>
+		</emitter>
+	</shape> -->
+
+	<shape type="obj" id="simple_bulb">
+		<string name="filename" value="simple_bulb.obj"/>
+		<bsdf type="diffuse">
+			<rgb name="reflectance" value="0.0, 0.0, 0.0"/>
+		</bsdf>
+
+		<emitter type="area">
+			<spectrum name="radiance" value="1000 770 560"/>
+		</emitter>
+	</shape>
+
+</scene>
